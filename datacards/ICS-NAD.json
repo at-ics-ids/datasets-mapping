@@ -7,31 +7,41 @@
       {
         "technique_id": "T0840",
         "technique_name": "Network Connection Enumeration",
-        "tactic": "Discovery",
+        "tactics": [
+          "Discovery"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0846",
         "technique_name": "Remote System Discovery",
-        "tactic": "Discovery",
+        "tactics": [
+          "Discovery"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0888",
         "technique_name": "Remote System Information Discovery",
-        "tactic": "Discovery",
+        "tactics": [
+          "Discovery"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0830",
         "technique_name": "Adversary-in-the-Middle",
-        "tactic": "Collection",
+        "tactics": [
+          "Collection"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0814",
         "technique_name": "Denial of Service",
-        "tactic": "Inhibit Response Function",
+        "tactics": [
+          "Inhibit Response Function"
+        ],
         "confidence": "high"
       }
     ],
@@ -46,8 +56,7 @@
   },
   "grounding": {
     "attack_list_source": [
-      "Zhou et al. 2026",
-      "Zhou et al. 2026 Sci.Data"
+      "Zhou et al. 2026"
     ],
     "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
     "policy": "Attacks taken from the dataset's own paper or its official release documentation."

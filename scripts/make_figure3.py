@@ -1,22 +1,38 @@
 #!/usr/bin/env python3
 # Figure 3: coverage by tactic (techniques exercised vs available), from coverage_matrix.csv + ATT&CK v19.1 tactic counts
 import csv, os
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(_HERE)
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import os
-_HERE=os.path.dirname(os.path.abspath(__file__))
-_ROOT=os.path.dirname(_HERE)
-HERE=os.path.dirname(os.path.abspath(__file__))
-rows=list(csv.reader(open(os.path.join(HERE,"..","mapping",os.path.join(_ROOT,"data","coverage_matrix.csv")))))[1:]
-# covered = distinct covered techniques per tactic (each row in the matrix is a covered technique)
+rows=list(csv.DictReader(open(os.path.join(_ROOT,"data","coverage_matrix.csv"))))
+# A technique is credited to every tactic ATT&CK lists it under; sub-techniques inherit
+# their parent's tactics. Same rule the `available` counts below obey.
+TACTICS={}
+for r in csv.DictReader(open(os.path.join(_ROOT,"data","attack_ics_v19_1_technique_tactics.csv"))):
+    TACTICS.setdefault(r["technique_id"],[]).append(r["tactic"])
 covered={}
-for r in rows: covered[r[2]]=covered.get(r[2],0)+1
-# available techniques per tactic in ATT&CK for ICS v19.1 (from the matrix header counts)
-AVAIL=[("Initial Access",12),("Execution",10),("Persistence",5),("Privilege Escalation",2),
-       ("Evasion",7),("Discovery",5),("Lateral Movement",6),("Collection",11),
-       ("Command and Control",3),("Inhibit Response Function",13),("Impair Process Control",4),("Impact",12)]
+for r in rows:
+    for t in TACTICS[r["technique_id"].split(".")[0]]:
+        covered[t]=covered.get(t,0)+1
+# Available techniques per tactic: ONE source, the shipped catalog. Do not re-type these
+# here. attack_ics_v19_1_catalog.csv cites the versioned matrix permalink and carries the
+# note explaining why the column totals 90 pairs across 79 distinct techniques.
+TAC_ORDER=["Initial Access","Execution","Persistence","Privilege Escalation","Evasion",
+           "Discovery","Lateral Movement","Collection","Command and Control",
+           "Inhibit Response Function","Impair Process Control","Impact"]
+_cat={r["tactic"]:int(r["techniques_available"])
+      for r in csv.DictReader(open(os.path.join(_ROOT,"data","attack_ics_v19_1_catalog.csv")))}
+_missing=[t for t in TAC_ORDER if t not in _cat]
+if _missing:
+    raise SystemExit(f"attack_ics_v19_1_catalog.csv is missing tactics: {_missing}")
+AVAIL=[(t,_cat[t]) for t in TAC_ORDER]
 names=[t for t,_ in AVAIL]; avail=[a for _,a in AVAIL]; cov=[covered.get(t,0) for t,_ in AVAIL]
-print("covered per tactic:", {t:covered.get(t,0) for t,_ in AVAIL}, "sum", sum(cov))
+# Do not read `sum` as a technique count: a technique is credited to every tactic it
+# appears under, so this totals tactic-technique PAIRS, not distinct techniques.
+print("covered per tactic:", {t:covered.get(t,0) for t,_ in AVAIL})
+print("  ", sum(cov), "tactic-technique pairs across",
+      len({r["technique_id"] for r in rows}), "distinct techniques")
 y=range(len(names))
 fig,ax=plt.subplots(figsize=(7.2,3.9))
 ax.barh(y,avail,color="#cdd8e8",label="Available in ATT&CK for ICS v19.1")
@@ -29,5 +45,10 @@ ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
 ax.legend(fontsize=7,loc="lower center",bbox_to_anchor=(0.5,1.01),ncol=2,frameon=False)
 plt.tight_layout()
 out=os.path.join(_ROOT,"figures","Figure3_coverage_by_tactic")
-fig.savefig(out+".png",dpi=300,bbox_inches="tight"); fig.savefig(out+".pdf",bbox_inches="tight")
+# Deterministic output: matplotlib stamps a wall-clock /CreationDate into every PDF and
+# the library version into every PNG. Both are suppressed so `git status` after a run
+# reflects the mapping, not the clock. Note the PNG pixels still depend on the
+# matplotlib version (tight bbox is measured from text extents); see requirements.txt.
+fig.savefig(out+".png",dpi=300,bbox_inches="tight",metadata={"Software":None})
+fig.savefig(out+".pdf",bbox_inches="tight",metadata={"CreationDate":None})
 print("saved",out+".png")

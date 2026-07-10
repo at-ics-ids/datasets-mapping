@@ -10,9 +10,14 @@ separately and never counted as ICS coverage.
 ## Reproduce
 
 ```bash
-pip install pandas matplotlib
+pip install -r requirements.txt
 bash reproduce.sh
 ```
+
+The pins matter only for the figures. Every CSV, `EVIDENCE_LOG.md` and the ten data cards
+are produced with the standard library and reproduce byte for byte on any Python 3; the
+three PNG files reproduce only under `matplotlib==3.10.9`, the version they were rendered
+with. Nothing in `scripts/` imports pandas.
 
 Regenerates `data/coverage_matrix.csv`, `data/enterprise_summary.csv`, all three figures, the evidence log, the ten data cards, and the paper's Table II (`data/table2_per_dataset.csv`) and Table III (`data/table3_tactic_coverage.csv`, including the uncovered set per tactic).
 

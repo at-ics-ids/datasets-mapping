@@ -7,36 +7,48 @@
       {
         "technique_id": "T0816",
         "technique_name": "Device Restart/Shutdown",
-        "tactic": "Inhibit Response Function",
+        "tactics": [
+          "Inhibit Response Function"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0835",
         "technique_name": "Manipulate I/O Image",
-        "tactic": "Inhibit Response Function",
+        "tactics": [
+          "Inhibit Response Function"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0836",
         "technique_name": "Modify Parameter",
-        "tactic": "Impair Process Control",
+        "tactics": [
+          "Impair Process Control"
+        ],
         "confidence": "high"
       },
       {
-        "technique_id": "T1692.001",
-        "technique_name": "Unauthorized Message: Command Message",
-        "tactic": "Impair Process Control",
+        "technique_id": "T1692",
+        "technique_name": "Unauthorized Message",
+        "tactics": [
+          "Evasion",
+          "Impair Process Control"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0831",
         "technique_name": "Manipulation of Control",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "high"
       }
     ],
     "ics_technique_count": 5,
     "tactics_covered": [
+      "Evasion",
       "Impact",
       "Impair Process Control",
       "Inhibit Response Function"
@@ -46,10 +58,7 @@
   },
   "grounding": {
     "attack_list_source": [
-      "Rodofile et al. 2017",
-      "Rodofile et al. 2017 ACISP",
-      "Rodofile et al. 2017 Table 1",
-      "Rodofile et al. 2017 Table 1 +"
+      "Rodofile et al. 2017"
     ],
     "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
     "policy": "Attacks taken from the dataset's own paper or its official release documentation."

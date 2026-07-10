@@ -20,8 +20,8 @@ CITE = {
  "Rodofile":"N. R. Rodofile et al., \"Process control cyber-attacks and labelled datasets on S7Comm critical infrastructure,\" ACISP, Springer, 2017.",
  "HIL-WDT":"L. Faramondi, F. Flammini, S. Guarino, R. Setola, \"A hardware-in-the-loop water distribution testbed dataset for cyber-physical security testing,\" IEEE Access, vol. 9, 2021.",
  "MSU-GP":"T. Morris, W. Gao, \"Industrial control system traffic data sets for intrusion detection research,\" Critical Infrastructure Protection VIII, Springer, 2014.",
- "MSU-PWR":"R. C. B. Hink et al., \"Machine learning for power system disturbance and cyber-attack discrimination,\" ISRCS, 2014. [PENDING: dataset paper not yet consulted]",
- "SWaT":"A. P. Mathur, N. O. Tippenhauer, \"SWaT: A water treatment testbed...,\" CySWater, 2016 (dataset attacks: Goh et al. 2016). [PENDING: dataset attack paper not yet consulted]",
+ "MSU-PWR":"U. Adhikari, S. Pan, T. Morris et al., Power System Attack Datasets README (MSU/ORNL, 2014); R. C. B. Hink et al., \"Machine learning for power system disturbance and cyber-attack discrimination,\" ISRCS, 2014.",
+ "SWaT":"J. Goh, S. Adepu, K. N. Junejo, A. Mathur, \"A Dataset to Support Research in the Design of Secure Water Treatment Systems,\" CRITIS 2016; iTrust SWaT.A1&A2 (Dec 2015) + A6 (Dec 2019) attack docs.",
  "EDS":"Y. Xue et al., \"Real-time intrusion detection based on decision fusion in industrial control systems,\" IEEE Trans. Ind. Cyber-Phys. Syst., vol. 2, 2024.",
 }
 ORDER = ["Edge-IIoTset","ICS-NAD","X-IIoTID","MSU-PWR","ICS-Flow","Rodofile","HIL-WDT","MSU-GP","EDS","SWaT"]
@@ -30,10 +30,14 @@ rows = list(csv.DictReader(open(SRC)))
 by = defaultdict(list)
 for r in rows: by[r["dataset"]].append(r)
 
+GRADES = ("high", "medium")
 def kind(r):
     c = r["confidence"]
     if c == "enterprise": return "Enterprise (reported separately)"
-    if c in ("removed","out-of-scope"): return "Removed / out of scope"
+    if c == "removed": return "Removed"
+    if c == "unmapped": return "Documented, unmapped (no ATT&CK technique in either matrix)"
+    if c not in GRADES:
+        raise SystemExit(f"unrecognised confidence {c!r} in mapping_evidence.csv")
     return "ICS"
 
 with open(OUT, "w") as f:
@@ -50,15 +54,20 @@ with open(OUT, "w") as f:
         if d not in by: continue
         f.write(f"## {d}\n\n")
         f.write(f"> {CITE.get(d,'(citation pending)')}\n\n")
-        # split by kind, preserve input order
-        for grp in ("ICS","Enterprise (reported separately)","Removed / out of scope"):
+        # split by kind, preserve input order. The group list is DERIVED from kind(), not
+        # re-typed: a renamed group must never silently drop rows from the released log.
+        GROUPS = ("ICS", "Enterprise (reported separately)", "Removed",
+                  "Documented, unmapped (no ATT&CK technique in either matrix)")
+        assert set(GROUPS) >= {kind(r) for r in by[d]}, \
+            f"{d}: unhandled group(s) {sorted({kind(r) for r in by[d]} - set(GROUPS))}"
+        for grp in GROUPS:
             g = [r for r in by[d] if kind(r)==grp]
             if not g: continue
             f.write(f"### {grp}\n\n")
             f.write("| Attack class (paper wording) | Technique | Tactic | Conf. | Paper location | Verbatim evidence |\n")
             f.write("|---|---|---|---|---|---|\n")
             for r in g:
-                tid = r["technique_id"].replace("ENT:","").strip()
+                tid = r["technique_id"].strip()
                 tech = f"{tid} {r['technique_name']}".strip(" –-")
                 # paper location = trailing "Sec..." portion of source if present
                 src = r["source"]

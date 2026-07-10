@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
 # Figure 1: technique coverage matrix (datasets x techniques).
-# ICS techniques (blue) from mapping/coverage_matrix.csv, plus a separate ATT&CK Enterprise
-# band (purple) from mapping/enterprise_summary.csv. Enterprise is NOT counted as ICS coverage.
+# ICS techniques (blue) from data/coverage_matrix.csv, plus a separate ATT&CK Enterprise
+# band (purple) from data/enterprise_summary.csv. Enterprise is NOT counted as ICS coverage.
 import csv, os
-import os
 _HERE=os.path.dirname(os.path.abspath(__file__))
 _ROOT=os.path.dirname(_HERE)
-try:
-    import matplotlib
-except ImportError:
-    import subprocess,sys; subprocess.run([sys.executable,"-m","pip","install","matplotlib","numpy","--break-system-packages","-q"]); import matplotlib
-matplotlib.use("Agg")
+import matplotlib; matplotlib.use("Agg")
 import numpy as np, matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
-HERE=os.path.dirname(os.path.abspath(__file__))
-MAP=os.path.join(_ROOT,"data")
 
 rows=list(csv.reader(open(os.path.join(_ROOT,"data","coverage_matrix.csv"))))
 hdr=rows[0]; datasets=hdr[3:]; data=rows[1:]
@@ -62,5 +55,10 @@ ax.set_ylim(len(datasets)-0.5,-1.35)
 for sp in ax.spines.values(): sp.set_visible(False)
 plt.tight_layout()
 out=os.path.join(_ROOT,"figures","Figure1_coverage_matrix")
-fig.savefig(out+".png",dpi=300,bbox_inches="tight"); fig.savefig(out+".pdf",bbox_inches="tight")
+# Deterministic output: matplotlib stamps a wall-clock /CreationDate into every PDF and
+# the library version into every PNG. Both are suppressed so `git status` after a run
+# reflects the mapping, not the clock. Note the PNG pixels still depend on the
+# matplotlib version (tight bbox is measured from text extents); see requirements.txt.
+fig.savefig(out+".png",dpi=300,bbox_inches="tight",metadata={"Software":None})
+fig.savefig(out+".pdf",bbox_inches="tight",metadata={"CreationDate":None})
 print("saved",out+".png","| ICS techniques:",len(ics),"| Enterprise:",len(ent),"| datasets:",len(datasets))

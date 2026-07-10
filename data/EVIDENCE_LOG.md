@@ -45,12 +45,12 @@ Every technique assignment is grounded in a verbatim passage from the dataset's 
 | DoS and DDoS | T0814 Denial of Service | Inhibit Response Function | high | Zhou et al. 2026 Sec.-2 | "send a large number of packets in a short period, resulting in a denial of service... Hping3" |
 | MitM (ARP poisoning) + FDI (ICMP redirection) | T0830 Adversary-in-the-Middle | Collection | high | Zhou et al. 2026 Sec.-3/-4 | "MitM: intercept and manipulate communication data... Arpspoof/ARP poisoning; FDI ICMP redirection changes the route message of packets to trick network routing" |
 
-### Removed / out of scope
+### Removed
 
 | Attack class (paper wording) | Technique | Tactic | Conf. | Paper location | Verbatim evidence |
 |---|---|---|---|---|---|
-| DROPPED: FDI mislabelled (T1692.002 Reporting Msg) | NONE | — | removed | Zhou et al. 2026 Sec.-3 (four FDI attacks are ICMP/TCP) | "'FDI' is network-layer packet manipulation (oversized ICMP, ICMP unreachable, wrong TCP flags), NOT forged OT reporting/command. Folds into DoS+AiTM. T1692.002 unsupported." |
-| DROPPED: FDI mislabelled (T0832 Manipulation of View) | NONE | — | removed | Zhou et al. 2026 Sec.-3 | "No operator-view manipulation; FDI is network-protocol trickery via Netwox. T0832 unsupported." |
+| DROPPED: FDI mislabelled (T1692.002 Reporting Msg) |  | — | removed | Zhou et al. 2026 Sec.-3 (four FDI attacks are ICMP/TCP) | "'FDI' is network-layer packet manipulation (oversized ICMP, ICMP unreachable, wrong TCP flags), NOT forged OT reporting/command. Folds into DoS+AiTM. T1692.002 unsupported." |
+| DROPPED: FDI mislabelled (T0832 Manipulation of View) |  | — | removed | Zhou et al. 2026 Sec.-3 | "No operator-view manipulation; FDI is network-protocol trickery via Netwox. T0832 unsupported." |
 
 ---
 
@@ -69,6 +69,7 @@ Every technique assignment is grounded in a verbatim passage from the dataset's 
 | Exfiltration | T0882 Theft of Operational Information | Impact | medium | Al-Hawawreh et al. 2022 Sec.III-B-6 | "leaking private and sensitive information related to IIoT devices, such as a PLC configuration, sensor data, credentials" |
 | Tampering (false data injection) | T1692.002 Unauthorized Message: Reporting Message | Impair Process Control | medium | Al-Hawawreh et al. 2022 Sec.III-B-7 | "poisoning of cloud data (i.e., false data injections)... fabricate and inject false data to affect the accuracy of a cloud data analysis" |
 | Tampering (fake alarms) | T0832 Manipulation of View | Impact | medium | Al-Hawawreh et al. 2022 Sec.III-B-7 | "send fake e-mail notifications or alarms to connected operators" |
+| Ransom DoS (RDoS) | T0814 Denial of Service | Inhibit Response Function | high | Al-Hawawreh et al. 2022 Sec.III-B-9 | "threatening to launch massive DDoS traffic unless a ransom is paid... volumetric attacks over IIoT application protocols (e.g., CoAP)" |
 
 ### Enterprise (reported separately)
 
@@ -77,28 +78,32 @@ Every technique assignment is grounded in a verbatim passage from the dataset's 
 | Weaponization (SSH brute force) | T1110 Brute Force | Enterprise | enterprise | Al-Hawawreh et al. 2022 Sec.III-B-2 + ATT&CK Enterprise | "explore a password from a dictionary, or word list... against SSH using the Hydra tool... super-user credentials are returned" |
 | Exploitation (reverse shell/backdoor) | T1219 Remote Access Software | Enterprise | enterprise | Al-Hawawreh et al. 2022 Sec.III-B-3 + ATT&CK Enterprise | "create a persistent reverse TCP shell/backdoor in the edge gateway" |
 | Exploitation (MitM edge gateway-router) | T1557 Adversary-in-the-Middle | Enterprise | enterprise | Al-Hawawreh et al. 2022 Sec.III-B-3 + ATT&CK Enterprise | "exploit communications between the edge gateway and router and send packets with a false source address to fool the edge gateway (IT link, not OT)" |
-| Lateral Movement (TCP relay pivot) | pivot IT network pivoting | Enterprise | enterprise | Al-Hawawreh et al. 2022 Sec.III-B-4 + ATT&CK Enterprise | "pivoting... open the channel between an attacker's device and the mail server through the edge gateway... mail server set up in a different network (IT, not OT)" |
 | Command and Control (DNS tunneling) | T1071.004 Application Layer Protocol: DNS | Enterprise | enterprise | Al-Hawawreh et al. 2022 Sec.III-B-5 + ATT&CK Enterprise | "DNS tunneling in a stealth mode... most common techniques and procedures used by APT" |
 | Command and Control (DNS tunneling) | T1572 Protocol Tunneling | Enterprise | enterprise | Al-Hawawreh et al. 2022 Sec.III-B-5 + ATT&CK Enterprise | "DNS tunneling in a stealth mode (based on a common port and protocol)" |
 | Crypto-Ransomware | T1486 Data Encrypted for Impact | Enterprise | enterprise | Al-Hawawreh et al. 2022 Sec.III-B-8 + ATT&CK Enterprise | "injects malware to deny access to the data or system and force a victim to pay a fee in the form of cryptocurrency... encrypt the configuration and setting files of physical devices" |
-| Ransom DoS (RDoS) | T1498 Network Denial of Service | Enterprise | enterprise | Al-Hawawreh et al. 2022 Sec.III-B-9 + ATT&CK Enterprise | "threatening to launch massive DDoS traffic unless a ransom is paid... volumetric attacks over IIoT application protocols (e.g., CoAP)" |
+
+### Documented, unmapped (no ATT&CK technique in either matrix)
+
+| Attack class (paper wording) | Technique | Tactic | Conf. | Paper location | Verbatim evidence |
+|---|---|---|---|---|---|
+| Lateral Movement (TCP relay pivot) | IT network pivoting | — | unmapped | Al-Hawawreh et al. 2022 Sec.III-B-4 + ATT&CK Enterprise | "pivoting... open the channel between an attacker's device and the mail server through the edge gateway... mail server set up in a different network (IT, not OT)" |
 
 ---
 
 ## MSU-PWR
 
-> R. C. B. Hink et al., "Machine learning for power system disturbance and cyber-attack discrimination," ISRCS, 2014. [PENDING: dataset paper not yet consulted]
+> U. Adhikari, S. Pan, T. Morris et al., Power System Attack Datasets README (MSU/ORNL, 2014); R. C. B. Hink et al., "Machine learning for power system disturbance and cyber-attack discrimination," ISRCS, 2014.
 
 ### ICS
 
 | Attack class (paper wording) | Technique | Tactic | Conf. | Paper location | Verbatim evidence |
 |---|---|---|---|---|---|
 | Data Injection | T1692.002 Unauthorized Message: Reporting Message | Impair Process Control | high | PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014) Scenario Types-5 | "imitate a valid fault by changing values to parameters such as current, voltage, sequence components etc." |
-| Data Injection (blind operator) | T0832 Manipulation of View | Impact | high | PowerSystem_Dataset_README 2014 Scenario Types-5 | "This attack aims to blind the operator and causes a black out" |
-| Remote Tripping Command Injection | T1692.001 Unauthorized Message: Command Message | Impair Process Control | high | PowerSystem_Dataset_README 2014 Scenario Types-3 + Table III | "an attack that sends a command to a relay which causes a breaker to open (scenarios 15-20 Command Injection to R1-R4)" |
-| Remote Tripping (breaker control) | T0831 Manipulation of Control | Impact | high | PowerSystem_Dataset_README 2014 Scenario Types-3 | "command to a relay which causes a breaker to open (unauthorized control of the breaker)" |
-| Relay Setting Change | T0836 Modify Parameter | Impair Process Control | high | PowerSystem_Dataset_README 2014 Scenario Types-4 + Table III | "relays are configured with a distance protection scheme and the attacker changes the setting" |
-| Relay Setting Change (disable protection) | T0837 Loss of Protection | Impact | high | PowerSystem_Dataset_README 2014 Scenario Types-4 | "changes the setting to disable the relay function such that relay will not trip for a valid fault or a valid command" |
+| Data Injection (blind operator) | T0832 Manipulation of View | Impact | high | PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014) Scenario Types-5 | "This attack aims to blind the operator and causes a black out" |
+| Remote Tripping Command Injection | T1692.001 Unauthorized Message: Command Message | Impair Process Control | high | PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014) Scenario Types-3 + Table III | "an attack that sends a command to a relay which causes a breaker to open (scenarios 15-20 Command Injection to R1-R4)" |
+| Remote Tripping (breaker control) | T0831 Manipulation of Control | Impact | high | PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014) Scenario Types-3 | "command to a relay which causes a breaker to open (unauthorized control of the breaker)" |
+| Relay Setting Change | T0836 Modify Parameter | Impair Process Control | high | PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014) Scenario Types-4 + Table III | "relays are configured with a distance protection scheme and the attacker changes the setting" |
+| Relay Setting Change (disable protection) | T0837 Loss of Protection | Impact | high | PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014) Scenario Types-4 | "changes the setting to disable the relay function such that relay will not trip for a valid fault or a valid command" |
 
 ---
 
@@ -135,7 +140,7 @@ Every technique assignment is grounded in a verbatim passage from the dataset's 
 | reactor-threshold manipulation | T0836 Modify Parameter | Impair Process Control | high | Rodofile et al. 2017 Table 1 + Sec.3.1 | "3.3/3.4 Change upper/lower threshold of Pipeline Reactor (type real); increasing the upper limit so that a pipe bursts" |
 | emergency stop; global reset | T0816 Device Restart/Shutdown | Inhibit Response Function | high | Rodofile et al. 2017 Sec.3.1 + Table 1 | "the entire process can be disrupted by sending the command for the emergency stop (4.1) or global reset (4.2)... the process has to be restarted... at least five minutes before it is operational" |
 
-### Removed / out of scope
+### Removed
 
 | Attack class (paper wording) | Technique | Tactic | Conf. | Paper location | Verbatim evidence |
 |---|---|---|---|---|---|
@@ -179,7 +184,7 @@ Every technique assignment is grounded in a verbatim passage from the dataset's 
 | Command injection (MPCI setpoints) | T0836 Modify Parameter | Impair Process Control | high | Morris & Gao 2014 Sec.4.3 | "unauthorized modification of process setpoints... malicious parameter command injection (MPCI)" |
 | DoS | T0814 Denial of Service | Inhibit Response Function | high | Morris & Gao 2014 Sec.4 + IJCIP taxonomy | "denial-of-service (DoS) attacks disrupt the communication link between the RTU and MTU or HMI" |
 
-### Removed / out of scope
+### Removed
 
 | Attack class (paper wording) | Technique | Tactic | Conf. | Paper location | Verbatim evidence |
 |---|---|---|---|---|---|
@@ -210,7 +215,7 @@ Every technique assignment is grounded in a verbatim passage from the dataset's 
 
 ## SWaT
 
-> A. P. Mathur, N. O. Tippenhauer, "SWaT: A water treatment testbed...," CySWater, 2016 (dataset attacks: Goh et al. 2016). [PENDING: dataset attack paper not yet consulted]
+> J. Goh, S. Adepu, K. N. Junejo, A. Mathur, "A Dataset to Support Research in the Design of Secure Water Treatment Systems," CRITIS 2016; iTrust SWaT.A1&A2 (Dec 2015) + A6 (Dec 2019) attack docs.
 
 ### ICS
 
@@ -223,7 +228,7 @@ Every technique assignment is grounded in a verbatim passage from the dataset's 
 | USB infiltration of SCADA workstation [A6] | T0847 Replication Through Removable Media | Initial Access | high | SWaT.A6 Dec 2019 Log.docx (iTrust) | "Infiltrate SCADA WS via USB thumb drive (A6 Dec 2019)" |
 | historian data exfiltration [A6] | T0882 Theft of Operational Information | Impact | high | SWaT.A6 Dec 2019 Log.docx (iTrust) | "First attack: Exfiltrate Historian Data (repeated 1030-1120, A6 Dec 2019)" |
 
-### Removed / out of scope
+### Removed
 
 | Attack class (paper wording) | Technique | Tactic | Conf. | Paper location | Verbatim evidence |
 |---|---|---|---|---|---|

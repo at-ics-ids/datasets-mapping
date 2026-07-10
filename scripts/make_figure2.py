@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 # Figure 2: technique frequency (how many of the 10 datasets exercise each technique)
 import csv, os
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(_HERE)
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import os
-_HERE=os.path.dirname(os.path.abspath(__file__))
-_ROOT=os.path.dirname(_HERE)
-HERE=os.path.dirname(os.path.abspath(__file__))
-rows=list(csv.reader(open(os.path.join(HERE,"..","mapping",os.path.join(_ROOT,"data","coverage_matrix.csv")))))
+rows=list(csv.reader(open(os.path.join(_ROOT,"data","coverage_matrix.csv"))))
 hdr=rows[0]; data=rows[1:]
 items=[]
 for r in data:
@@ -25,5 +23,10 @@ ax.spines['top'].set_visible(False); ax.spines['right'].set_visible(False)
 ax.grid(axis='y',color="#dddddd",linewidth=0.6); ax.set_axisbelow(True)
 plt.tight_layout()
 out=os.path.join(_ROOT,"figures","Figure2_technique_frequency")
-fig.savefig(out+".png",dpi=300,bbox_inches="tight"); fig.savefig(out+".pdf",bbox_inches="tight")
+# Deterministic output: matplotlib stamps a wall-clock /CreationDate into every PDF and
+# the library version into every PNG. Both are suppressed so `git status` after a run
+# reflects the mapping, not the clock. Note the PNG pixels still depend on the
+# matplotlib version (tight bbox is measured from text extents); see requirements.txt.
+fig.savefig(out+".png",dpi=300,bbox_inches="tight",metadata={"Software":None})
+fig.savefig(out+".pdf",bbox_inches="tight",metadata={"CreationDate":None})
 print("saved",out+".png","| techniques:",len(ids),"| max freq:",max(vals))

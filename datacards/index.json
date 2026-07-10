@@ -17,19 +17,19 @@
     {
       "dataset": "X-IIoTID",
       "card": "X-IIoTID.json",
-      "ics_technique_count": 7,
-      "enterprise_technique_count": 7
+      "ics_technique_count": 8,
+      "enterprise_technique_count": 6
     },
     {
       "dataset": "MSU-PWR",
       "card": "MSU-PWR.json",
-      "ics_technique_count": 6,
+      "ics_technique_count": 5,
       "enterprise_technique_count": 0
     },
     {
       "dataset": "ICS-Flow",
       "card": "ICS-Flow.json",
-      "ics_technique_count": 7,
+      "ics_technique_count": 6,
       "enterprise_technique_count": 0
     },
     {
@@ -47,19 +47,19 @@
     {
       "dataset": "MSU-GP",
       "card": "MSU-GP.json",
-      "ics_technique_count": 9,
+      "ics_technique_count": 8,
       "enterprise_technique_count": 0
     },
     {
       "dataset": "EDS",
       "card": "EDS.json",
-      "ics_technique_count": 9,
+      "ics_technique_count": 8,
       "enterprise_technique_count": 0
     },
     {
       "dataset": "SWaT",
       "card": "SWaT.json",
-      "ics_technique_count": 6,
+      "ics_technique_count": 5,
       "enterprise_technique_count": 0
     }
   ]

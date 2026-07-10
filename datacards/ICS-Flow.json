@@ -7,50 +7,58 @@
       {
         "technique_id": "T0840",
         "technique_name": "Network Connection Enumeration",
-        "tactic": "Discovery",
+        "tactics": [
+          "Discovery"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0846",
         "technique_name": "Remote System Discovery",
-        "tactic": "Discovery",
+        "tactics": [
+          "Discovery"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0830",
         "technique_name": "Adversary-in-the-Middle",
-        "tactic": "Collection",
+        "tactics": [
+          "Collection"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0814",
         "technique_name": "Denial of Service",
-        "tactic": "Inhibit Response Function",
+        "tactics": [
+          "Inhibit Response Function"
+        ],
         "confidence": "high"
       },
       {
-        "technique_id": "T1692.001",
-        "technique_name": "Unauthorized Message: Command Message",
-        "tactic": "Impair Process Control",
-        "confidence": "high"
-      },
-      {
-        "technique_id": "T1692.002",
-        "technique_name": "Unauthorized Message: Reporting Message",
-        "tactic": "Impair Process Control",
+        "technique_id": "T1692",
+        "technique_name": "Unauthorized Message",
+        "tactics": [
+          "Evasion",
+          "Impair Process Control"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0832",
         "technique_name": "Manipulation of View",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "medium"
       }
     ],
-    "ics_technique_count": 7,
+    "ics_technique_count": 6,
     "tactics_covered": [
       "Collection",
       "Discovery",
+      "Evasion",
       "Impact",
       "Impair Process Control",
       "Inhibit Response Function"
@@ -60,8 +68,7 @@
   },
   "grounding": {
     "attack_list_source": [
-      "Dehlaghi-Ghadim et al. 2023",
-      "Dehlaghi-Ghadim et al. 2023 arXiv:2305.09678"
+      "Dehlaghi-Ghadim et al. 2023"
     ],
     "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
     "policy": "Attacks taken from the dataset's own paper or its official release documentation."

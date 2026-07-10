@@ -7,42 +7,48 @@
       {
         "technique_id": "T0847",
         "technique_name": "Replication Through Removable Media",
-        "tactic": "Initial Access",
+        "tactics": [
+          "Initial Access"
+        ],
         "confidence": "high"
       },
       {
-        "technique_id": "T1692.001",
-        "technique_name": "Unauthorized Message: Command Message",
-        "tactic": "Impair Process Control",
-        "confidence": "high"
-      },
-      {
-        "technique_id": "T1692.002",
-        "technique_name": "Unauthorized Message: Reporting Message",
-        "tactic": "Impair Process Control",
+        "technique_id": "T1692",
+        "technique_name": "Unauthorized Message",
+        "tactics": [
+          "Evasion",
+          "Impair Process Control"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0831",
         "technique_name": "Manipulation of Control",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0832",
         "technique_name": "Manipulation of View",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0882",
         "technique_name": "Theft of Operational Information",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "high"
       }
     ],
-    "ics_technique_count": 6,
+    "ics_technique_count": 5,
     "tactics_covered": [
+      "Evasion",
       "Impact",
       "Impair Process Control",
       "Initial Access"
@@ -52,9 +58,8 @@
   },
   "grounding": {
     "attack_list_source": [
-      "SWaT.A1&A2 Dec 2015 List_of_attacks_Final.xlsx",
-      "SWaT.A1&A2 Dec 2015 List_of_attacks_Final.xlsx (Goh et al. 2016)",
-      "SWaT.A6 Dec 2019 Log.docx (iTrust)"
+      "SWaT.A1&A2 Dec 2015",
+      "SWaT.A6 Dec 2019"
     ],
     "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
     "policy": "Attacks taken from the dataset's own paper or its official release documentation."

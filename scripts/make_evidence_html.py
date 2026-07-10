@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate evidence-log.html (dashboard page) from mapping_evidence.csv.
 Browsable per-dataset primary-source evidence: every technique with its paper location + verbatim quote."""
-import csv, os, html
+import csv, os, html, datetime
 from collections import defaultdict
 HERE=os.path.dirname(os.path.abspath(__file__))
 ROOT=os.path.dirname(HERE)
@@ -22,16 +22,22 @@ CITE={
  "SWaT":"J. Goh, S. Adepu, K. N. Junejo, A. Mathur, “A Dataset to Support Research in the Design of Secure Water Treatment Systems,” CRITIS 2016; iTrust SWaT.A1&A2 (Dec 2015) + A6 (Dec 2019) attack docs.",
 }
 ORDER=["Edge-IIoTset","ICS-NAD","X-IIoTID","MSU-PWR","ICS-Flow","Rodofile","HIL-WDT","MSU-GP","EDS","SWaT"]
+_BUILT = datetime.date.today().strftime("%d %b %Y").lstrip("0")
 def e(x): return html.escape(str(x or ""))
 
 rows=list(csv.DictReader(open(SRC)))
 by=defaultdict(list)
 for r in rows: by[r["dataset"]].append(r)
+done=[d for d in ORDER if d in by]   # datasets that actually have evidence rows
 
+GRADES = ("high", "medium")
 def kind(r):
     c=r["confidence"]
     if c=="enterprise": return "ent"
-    if c in ("removed","out-of-scope"): return "rm"
+    if c=="removed": return "rm"
+    if c=="unmapped": return "un"      # documented behaviour, no ATT&CK identifier in either matrix
+    if c not in GRADES:
+        raise SystemExit(f"unrecognised confidence {c!r} in mapping_evidence.csv")
     return "ics"
 
 # summary counts
@@ -39,8 +45,8 @@ ics_t=set(); ent_t=set()
 for r in rows:
     if kind(r)=="ics" and r["tactic"]: ics_t.add(r["technique_id"])
     if kind(r)=="ent":
-        code=r["technique_id"].replace("ENT:","").split()[0]
-        if code!="pivot": ent_t.add(code)
+        code=r["technique_id"].split()[0]
+        ent_t.add(code)
 
 CSS="""
 :root{--accent:#2E5FA6;--accent2:#12385f;--line:#dfe4ea;--card:#fff;--muted:#6b7683;--chip:#eef2f8}
@@ -78,14 +84,14 @@ th{background:#eef2f8;color:var(--accent2);font-size:11.5px}
 parts=[]
 parts.append(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Evidence Log — Cyber-AI 2026</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Evidence Log — Cyber-AI 2026</title>
 <style>{CSS}</style></head><body>
-<header class="top"><div class="wrap"><nav class="crumbs"><a href="index.html">← Dashboard</a></nav>
+<header class="top"><div class="wrap">
 <h1>Mapping Evidence Log</h1><p>Every ATT&amp;CK technique, grounded in the dataset's own paper or official release documentation</p></div></header>
 <div class="wrap">
-<p class="sub">For each of the ten datasets, every mapped technique is backed by a verbatim passage from the <b>original dataset paper</b> and its exact location. Enterprise cells are (mapped to ATT&amp;CK Enterprise, reported separately). Removed cells record assignments dropped as unsupported. Generated from <code>mapping/mapping_evidence.csv</code>.</p>
+<p class="sub">For each of the ten datasets, every mapped technique is backed by a verbatim passage from the dataset's <b>own paper or its official release documentation</b>, and its exact location. Enterprise cells are mapped to ATT&amp;CK Enterprise and reported separately. Removed cells record assignments dropped as unsupported. Generated from <code>data/mapping_evidence.csv</code>.</p>
 <div class="stats">
-  <div class="stat"><div class="n">10/10</div><div class="l">datasets grounded</div></div>
+  <div class="stat"><div class="n">{len(done)}/10</div><div class="l">datasets grounded</div></div>
   <div class="stat"><div class="n">{len(ics_t)}</div><div class="l">ICS techniques</div></div>
   <div class="stat"><div class="n">{len(ent_t)}</div><div class="l">Enterprise techniques</div></div>
   <div class="stat"><div class="n">{len(rows)}</div><div class="l">evidence cells</div></div>
@@ -94,7 +100,7 @@ parts.append(f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 def table(cells, enterprise=False):
     h="<table><tr><th>Attack class (paper wording)</th><th>Technique</th><th>Tactic</th><th>Conf.</th><th>Paper location</th><th>Verbatim evidence</th></tr>"
     for r in cells:
-        tid=r["technique_id"].replace("ENT:","").strip()
+        tid=r["technique_id"].strip()
         cls="tid ent" if enterprise else "tid"
         conf=r["confidence"]
         cc=f'conf-{conf}' if conf in ("high","medium") else ""
@@ -110,15 +116,17 @@ for d in ORDER:
     if d not in by: continue
     g=by[d]
     ics=[r for r in g if kind(r)=="ics"]; ent=[r for r in g if kind(r)=="ent"]; rm=[r for r in g if kind(r)=="rm"]
+    un=[r for r in g if kind(r)=="un"]
     ntech=len({r["technique_id"] for r in ics})
     parts.append(f'<details class="ds"><summary>{e(d)} <span class="cnt">{ntech} ICS techniques'
                  + (f' · {len(ent)} Enterprise' if ent else '') + (f' · {len(rm)} removed' if rm else '') + '</span></summary>')
     parts.append(f'<div class="body"><div class="cite">{e(CITE.get(d,""))}</div>')
     if ics: parts.append("<h4>ICS techniques</h4>"+table(ics))
     if ent: parts.append('<h4 class="ent">ATT&amp;CK Enterprise (reported separately)</h4>'+table(ent,enterprise=True))
-    if rm:  parts.append('<h4 class="rm">Removed / out of scope</h4>'+table(rm))
+    if rm:  parts.append('<h4 class="rm">Removed</h4>'+table(rm))
+    if un:  parts.append('<h4 class="rm">Documented, unmapped (no ATT&amp;CK technique in either matrix)</h4>'+table(un))
     parts.append("</div></details>")
 
-parts.append('<p class="foot">Built 9 Jul 2026 · regenerated from mapping_evidence.csv · companion to the released mapping + EVIDENCE_LOG.md</p></div></body></html>')
+parts.append(f'<p class="foot">Built {_BUILT} · regenerated from mapping_evidence.csv · companion to the released mapping + EVIDENCE_LOG.md</p></div></body></html>')
 open(OUT,"w").write("\n".join(parts))
 print("wrote evidence-log.html |", len(rows), "cells,", len(by), "datasets")

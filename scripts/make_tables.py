@@ -35,6 +35,17 @@ cat  = {r["tactic"]: int(r["techniques_available"])
 etac = {r["technique_id"]: r["enterprise_tactic"]
         for r in csv.DictReader(open(os.path.join(DATA, "enterprise_tactics.csv")))}
 
+# A technique is credited to every tactic ATT&CK lists it under; sub-techniques
+# inherit their parent's tactics. This matches the rule the `available` column obeys.
+TACTICS = collections.defaultdict(list)
+for r in csv.DictReader(open(os.path.join(DATA, "attack_ics_v19_1_technique_tactics.csv"))):
+    TACTICS[r["technique_id"]].append(r["tactic"])
+def tactics_of(tid):
+    t = TACTICS.get(tid.split(".")[0])
+    if not t:
+        raise KeyError(f"{tid}: no tactic recorded in attack_ics_v19_1_technique_tactics.csv")
+    return t
+
 DATASETS = [c for c in cov[0] if c not in ("technique_id","technique_name","tactic")]
 ent_count = collections.Counter(r["dataset"] for r in ent)
 
@@ -45,13 +56,15 @@ with open(p2, "w", newline="") as f:
     w.writerow(["Dataset","ICS techniques","Tactics covered","Enterprise techniques"])
     for d in DATASETS:
         techs   = [r for r in cov if r[d].strip()]
-        tactics = sorted({r["tactic"] for r in techs}, key=TAC_ORDER.index)
+        tactics = sorted({t for r in techs for t in tactics_of(r["technique_id"])},
+                         key=TAC_ORDER.index)
         w.writerow([d, len(techs), "; ".join(KEY[t] for t in tactics),
                     ent_count[d] if ent_count[d] else "-"])
 
 # ---------------- Table III ----------------
 tac_cov = collections.defaultdict(set)
-for r in cov: tac_cov[r["tactic"]].add(r["technique_id"])
+for r in cov:
+    for t in tactics_of(r["technique_id"]): tac_cov[t].add(r["technique_id"])
 ent_ids = {r["enterprise_ref"].split()[0] for r in ent}
 ent_by_tactic = collections.Counter(etac[t] for t in ent_ids)
 
@@ -71,7 +84,7 @@ empty = [t for t in TAC_ORDER if not tac_cov[t]]
 print(f"wrote {os.path.relpath(p2, ROOT)}  (10 datasets)")
 print(f"wrote {os.path.relpath(p3, ROOT)}  (12 ICS tactics + Enterprise block)")
 print(f"  distinct ICS techniques covered: {ics_distinct}")
-print(f"  uncovered, per tactic (see the `uncovered` column; not summable):")
+print("  uncovered, per tactic (see the uncovered column; not summable):")
 for t in TAC_ORDER:
     print(f"    {t:<28}{cat[t] - len(tac_cov[t]):>3}")
 print(f"  tactics exercised by no dataset: {len(empty)} -> {empty}")

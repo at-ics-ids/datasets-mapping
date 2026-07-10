@@ -7,42 +7,48 @@
       {
         "technique_id": "T0836",
         "technique_name": "Modify Parameter",
-        "tactic": "Impair Process Control",
+        "tactics": [
+          "Impair Process Control"
+        ],
         "confidence": "high"
       },
       {
-        "technique_id": "T1692.001",
-        "technique_name": "Unauthorized Message: Command Message",
-        "tactic": "Impair Process Control",
-        "confidence": "high"
-      },
-      {
-        "technique_id": "T1692.002",
-        "technique_name": "Unauthorized Message: Reporting Message",
-        "tactic": "Impair Process Control",
+        "technique_id": "T1692",
+        "technique_name": "Unauthorized Message",
+        "tactics": [
+          "Evasion",
+          "Impair Process Control"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0831",
         "technique_name": "Manipulation of Control",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0832",
         "technique_name": "Manipulation of View",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0837",
         "technique_name": "Loss of Protection",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "high"
       }
     ],
-    "ics_technique_count": 6,
+    "ics_technique_count": 5,
     "tactics_covered": [
+      "Evasion",
       "Impact",
       "Impair Process Control"
     ],
@@ -51,12 +57,7 @@
   },
   "grounding": {
     "attack_list_source": [
-      "PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014) Scenario Types-5",
-      "PowerSystem_Dataset_README 2014 Scenario Types-3",
-      "PowerSystem_Dataset_README 2014 Scenario Types-3 + Table III",
-      "PowerSystem_Dataset_README 2014 Scenario Types-4",
-      "PowerSystem_Dataset_README 2014 Scenario Types-4 + Table III",
-      "PowerSystem_Dataset_README 2014 Scenario Types-5"
+      "PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014)"
     ],
     "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
     "policy": "Attacks taken from the dataset's own paper or its official release documentation."

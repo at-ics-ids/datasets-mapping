@@ -7,68 +7,91 @@
       {
         "technique_id": "T0846",
         "technique_name": "Remote System Discovery",
-        "tactic": "Discovery",
+        "tactics": [
+          "Discovery"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0888",
         "technique_name": "Remote System Information Discovery",
-        "tactic": "Discovery",
+        "tactics": [
+          "Discovery"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0811",
         "technique_name": "Data from Information Repositories",
-        "tactic": "Collection",
+        "tactics": [
+          "Collection"
+        ],
         "confidence": "high"
       },
       {
         "technique_id": "T0861",
         "technique_name": "Point & Tag Identification",
-        "tactic": "Collection",
+        "tactics": [
+          "Collection"
+        ],
         "confidence": "high"
       },
       {
-        "technique_id": "T1692.002",
-        "technique_name": "Unauthorized Message: Reporting Message",
-        "tactic": "Impair Process Control",
+        "technique_id": "T0814",
+        "technique_name": "Denial of Service",
+        "tactics": [
+          "Inhibit Response Function"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692",
+        "technique_name": "Unauthorized Message",
+        "tactics": [
+          "Evasion",
+          "Impair Process Control"
+        ],
         "confidence": "medium"
       },
       {
         "technique_id": "T0832",
         "technique_name": "Manipulation of View",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "medium"
       },
       {
         "technique_id": "T0882",
         "technique_name": "Theft of Operational Information",
-        "tactic": "Impact",
+        "tactics": [
+          "Impact"
+        ],
         "confidence": "medium"
       }
     ],
-    "ics_technique_count": 7,
+    "ics_technique_count": 8,
     "tactics_covered": [
       "Collection",
       "Discovery",
+      "Evasion",
       "Impact",
-      "Impair Process Control"
+      "Impair Process Control",
+      "Inhibit Response Function"
     ],
     "enterprise_techniques": [
       "T1071.004 Application Layer Protocol: DNS",
       "T1110 Brute Force",
       "T1219 Remote Access Software",
       "T1486 Data Encrypted for Impact",
-      "T1498 Network Denial of Service",
       "T1557 Adversary-in-the-Middle",
       "T1572 Protocol Tunneling"
     ],
-    "enterprise_technique_count": 7
+    "enterprise_technique_count": 6
   },
   "grounding": {
     "attack_list_source": [
-      "Al-Hawawreh et al. 2022",
-      "Al-Hawawreh et al. 2022 IoTJ"
+      "Al-Hawawreh et al. 2022"
     ],
     "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
     "policy": "Attacks taken from the dataset's own paper or its official release documentation."
