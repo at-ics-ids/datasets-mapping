@@ -3,9 +3,14 @@
 Technique-level mapping of 10 public ICS/IIoT intrusion-detection datasets to
 MITRE ATT&CK for ICS **v19.1**, with the scripts that reproduce every figure and table in the paper.
 
-**Headline.** The ten datasets exercise **19 ICS techniques** across **6 of the 12 tactics**.
-Enterprise (IT) attacks carried by the IIoT datasets map to **8 ATT&CK Enterprise techniques**, reported
+**Headline.** The ten datasets exercise **18 ICS techniques** across **7 of the 12 tactics**.
+Enterprise (IT) attacks carried by the IIoT datasets map to **7 ATT&CK Enterprise techniques**, reported
 separately and never counted as ICS coverage.
+
+Coverage is reported at **parent-technique grain**, matching the granularity of the published v19.1 catalog:
+`T1692.001` and `T1692.002` are both credited to `T1692 Unauthorized Message`, and the released mapping keeps
+the sub-technique identifiers. A technique is credited to **every** tactic ATT&CK lists it under, which is the
+rule the `techniques_available` column of `data/attack_ics_v19_1_catalog.csv` already obeys.
 
 ## Reproduce
 
@@ -27,15 +32,22 @@ Every mapped technique is taken from the dataset's **own paper or its official r
 from a secondary summary. `data/mapping_evidence.csv` records, per cell, the verbatim passage that supports the
 assignment, its source, and a confidence grade.
 
-Confidence: **high** (59 cells) means the dataset's own description names the behavior the technique
-describes; **medium** (9 cells) means the technique follows by inference from that description.
+Confidence: **high** (60 cells) means the dataset's own description names the behavior the technique
+describes; **medium** (9 cells) means the technique follows by inference from that description. Of the 69 ICS
+assignments, one technique (`T0826 Loss of Availability`) rests on a single medium cell; rejecting every medium
+assignment would leave 17 techniques and would empty no tactic.
+
+Five candidate assignments were considered and rejected; they are kept in `data/mapping_evidence.csv` with
+`confidence = removed` and the evidence behind each rejection. One documented behaviour carries no ATT&CK
+identifier in either matrix and is recorded as `confidence = unmapped`.
 
 ## Layout
 
 | path | contents |
 |---|---|
 | `scripts/` | mapping builder, figure scripts, table generator, evidence-log generators |
-| `data/` | curated mapping, coverage matrix, enterprise summary, per-cell evidence |
+| `data/` | curated mapping, coverage matrix, enterprise summary, per-cell evidence, ATT&CK v19.1 catalog and technique-to-tactic map |
+| `requirements.txt` | pinned versions; needed only for byte-identical figures |
 | `figures/` | Figures 1-3 (PNG + PDF) |
 | `datacards/` | machine-readable per-dataset cards (`<Dataset>.json` + `index.json`) |
 | `NOTICE` | what this repository does not contain; MITRE ATT&CK and dataset-author rights |
@@ -71,4 +83,4 @@ CC BY 4.0 covers our compilation, not the quotations. Cite the dataset papers.
 ## Citation
 
 See `CITATION.cff`, and cite the paper. A DOI-bearing archive will be deposited on
-acceptance; until then, cite the repository by its tag and commit.
+acceptance; until then, cite the repository by its release tag.
