@@ -1,0 +1,11 @@
+Dataset,ICS techniques,Tactics covered,Enterprise techniques
+Edge-IIoTset,5,DI; CO; IRF,4
+ICS-NAD,5,DI; CO; IRF,-
+X-IIoTID,7,DI; CO; IPC; IM,7
+MSU-PWR,6,IPC; IM,-
+ICS-Flow,7,DI; CO; IRF; IPC; IM,-
+Rodofile,5,IRF; IPC; IM,-
+HIL-WDT,7,DI; CO; IRF; IPC; IM,-
+MSU-GP,9,DI; CO; IRF; IPC; IM,-
+EDS,9,DI; CO; IPC; IM,-
+SWaT,6,IA; IPC; IM,-

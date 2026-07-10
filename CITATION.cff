@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+type: software
+title: "ATT&CK-for-ICS Technique Coverage Toolkit"
+message: "If you use this toolkit, please cite the paper below."
+authors:
+  - {family-names: Termanini, given-names: Ayman, orcid: "https://orcid.org/0009-0006-8788-0638"}
+  - {family-names: Bourdoucen, given-names: Hadj, orcid: "https://orcid.org/0000-0002-6385-3196"}
+  - {family-names: Al-Abri, given-names: Dawood, orcid: "https://orcid.org/0000-0003-0814-1900"}
+  - {family-names: Al Maashri, given-names: Ahmed, orcid: "https://orcid.org/0000-0002-7018-5026"}
+version: "1.0.0"
+date-released: 2026-07-10
+url: "https://github.com/at-ics-ids/datasets-mapping"
+repository-code: "https://github.com/at-ics-ids/datasets-mapping"
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "Mapping Intrusion-Detection Datasets to MITRE ATT&CK for ICS: A Technique-Level Coverage Benchmark and Open-Source Toolkit"
+  year: 2026
+  authors:
+    - {family-names: Termanini, given-names: Ayman, orcid: "https://orcid.org/0009-0006-8788-0638"}
+    - {family-names: Bourdoucen, given-names: Hadj, orcid: "https://orcid.org/0000-0002-6385-3196"}
+    - {family-names: Al-Abri, given-names: Dawood, orcid: "https://orcid.org/0000-0003-0814-1900"}
+    - {family-names: Al Maashri, given-names: Ahmed, orcid: "https://orcid.org/0000-0002-7018-5026"}

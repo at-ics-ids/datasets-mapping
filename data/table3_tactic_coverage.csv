@@ -1,0 +1,19 @@
+block,tactic,covered,available,uncovered
+ICS,Initial Access,1,12,11
+ICS,Execution,0,10,10
+ICS,Persistence,0,5,5
+ICS,Privilege Escalation,0,2,2
+ICS,Evasion,0,7,7
+ICS,Discovery,3,5,2
+ICS,Lateral Movement,0,6,6
+ICS,Collection,3,11,8
+ICS,Command and Control,0,3,3
+ICS,Inhibit Response Function,3,13,10
+ICS,Impair Process Control,3,4,1
+ICS,Impact,6,12,6
+Enterprise,Initial Access,1,n/a,n/a
+Enterprise,Credential Access,1,n/a,n/a
+Enterprise,Collection,1,n/a,n/a
+Enterprise,Command and Control,3,n/a,n/a
+Enterprise,Impact,2,n/a,n/a
+Enterprise,Enterprise total,8,n/a,n/a

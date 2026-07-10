@@ -1,0 +1,84 @@
+{
+  "dataset": "MSU-GP",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0846",
+        "technique_name": "Remote System Discovery",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0888",
+        "technique_name": "Remote System Information Discovery",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0861",
+        "technique_name": "Point & Tag Identification",
+        "tactic": "Collection",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0814",
+        "technique_name": "Denial of Service",
+        "tactic": "Inhibit Response Function",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0836",
+        "technique_name": "Modify Parameter",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.001",
+        "technique_name": "Unauthorized Message: Command Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.002",
+        "technique_name": "Unauthorized Message: Reporting Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0831",
+        "technique_name": "Manipulation of Control",
+        "tactic": "Impact",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0832",
+        "technique_name": "Manipulation of View",
+        "tactic": "Impact",
+        "confidence": "medium"
+      }
+    ],
+    "ics_technique_count": 9,
+    "tactics_covered": [
+      "Collection",
+      "Discovery",
+      "Impact",
+      "Impair Process Control",
+      "Inhibit Response Function"
+    ],
+    "enterprise_techniques": [],
+    "enterprise_technique_count": 0
+  },
+  "grounding": {
+    "attack_list_source": [
+      "Morris & Gao 2014"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Morris and Gao, Critical Infrastructure Protection VIII, Springer, 2014, pp. 65-78",
+    "doi": "10.1007/978-3-662-45355-1_5"
+  }
+}

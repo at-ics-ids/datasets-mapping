@@ -1,0 +1,69 @@
+NOTICE
+======
+
+This file records what this repository does not contain, and the rights that
+third parties retain in the material it does contain. It grants nothing and
+restricts nothing; the licences are LICENSE (MIT, code) and LICENSE-DATA
+(CC BY 4.0, everything else).
+
+
+1. Datasets
+-----------
+
+This repository contains no dataset records, no network traffic, no sensor
+measurements, and no labels. Nothing here can be used to train or evaluate a
+detector.
+
+What it contains is a mapping: for each of ten ICS and IIoT intrusion-detection
+datasets, the ATT&CK for ICS techniques that the dataset's own authors
+documented, together with the passage of their paper or release documentation
+that supports each assignment.
+
+Each dataset remains the property of its authors and is governed by its own
+terms of distribution. Some are downloaded from a public page; others require a
+request to the authors or the operating institution, and some carry a data-use
+agreement. Obtain each dataset from its published source, or by request to its
+authors, and comply with the terms they set. This repository confers no right
+of access to any of them.
+
+The ten datasets, with the DOI of the paper that introduces each, are listed in
+data/dataset_meta.csv.
+
+
+2. MITRE ATT&CK
+---------------
+
+Technique identifiers, technique names, tactic names, and the per-tactic
+technique counts reproduced in data/ are drawn from MITRE ATT&CK for ICS,
+version 19.1 (https://attack.mitre.org/matrices/ics/).
+
+    "© 2026 The MITRE Corporation. This work is reproduced and distributed
+     with the permission of The MITRE Corporation."
+
+ATT&CK® and MITRE ATT&CK® are registered trademarks of The MITRE Corporation.
+MITRE grants a non-exclusive, royalty-free licence to use ATT&CK for research,
+development, and commercial purposes, provided that MITRE's copyright
+designation and licence are reproduced in any copy. The designation above is
+reproduced in satisfaction of that condition.
+
+MITRE does not endorse this work, and does not claim that ATT&CK enumerates
+every possible adversary behaviour. Coverage of the ATT&CK matrix does not
+imply defensive coverage. MITRE's full terms and disclaimers are at:
+
+    https://attack.mitre.org/resources/legal-and-branding/terms-of-use/
+
+
+3. Quoted passages
+------------------
+
+data/mapping_evidence.csv and data/EVIDENCE_LOG.md quote short passages,
+verbatim and with attribution, from the papers and release documentation of the
+ten datasets. The quotations exist so that every mapped technique can be traced
+to the sentence that justifies it, which is what makes the mapping auditable
+rather than asserted.
+
+Copyright in those sentences remains with their authors and publishers. The
+CC BY 4.0 licence in LICENSE-DATA covers our selection, arrangement, and
+analysis. It does not cover the quoted sentences, and it cannot: we do not own
+them. Anyone reusing the evidence file should cite the dataset papers, not only
+this repository.

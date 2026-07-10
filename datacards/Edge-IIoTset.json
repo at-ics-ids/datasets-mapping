@@ -1,0 +1,64 @@
+{
+  "dataset": "Edge-IIoTset",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0840",
+        "technique_name": "Network Connection Enumeration",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0846",
+        "technique_name": "Remote System Discovery",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0888",
+        "technique_name": "Remote System Information Discovery",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0830",
+        "technique_name": "Adversary-in-the-Middle",
+        "tactic": "Collection",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0814",
+        "technique_name": "Denial of Service",
+        "tactic": "Inhibit Response Function",
+        "confidence": "high"
+      }
+    ],
+    "ics_technique_count": 5,
+    "tactics_covered": [
+      "Collection",
+      "Discovery",
+      "Inhibit Response Function"
+    ],
+    "enterprise_techniques": [
+      "T1110 Brute Force",
+      "T1190 Exploit Public-Facing Application",
+      "T1219 Remote Access Software",
+      "T1486 Data Encrypted for Impact"
+    ],
+    "enterprise_technique_count": 4
+  },
+  "grounding": {
+    "attack_list_source": [
+      "Ferrag et al. 2022",
+      "Ferrag et al. 2022 IEEE Access"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Ferrag et al., IEEE Access, vol. 10, pp. 40281-40306, 2022",
+    "doi": "10.1109/ACCESS.2022.3165809"
+  }
+}

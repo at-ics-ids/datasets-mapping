@@ -1,0 +1,66 @@
+{
+  "dataset": "SWaT",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0847",
+        "technique_name": "Replication Through Removable Media",
+        "tactic": "Initial Access",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.001",
+        "technique_name": "Unauthorized Message: Command Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.002",
+        "technique_name": "Unauthorized Message: Reporting Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0831",
+        "technique_name": "Manipulation of Control",
+        "tactic": "Impact",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0832",
+        "technique_name": "Manipulation of View",
+        "tactic": "Impact",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0882",
+        "technique_name": "Theft of Operational Information",
+        "tactic": "Impact",
+        "confidence": "high"
+      }
+    ],
+    "ics_technique_count": 6,
+    "tactics_covered": [
+      "Impact",
+      "Impair Process Control",
+      "Initial Access"
+    ],
+    "enterprise_techniques": [],
+    "enterprise_technique_count": 0
+  },
+  "grounding": {
+    "attack_list_source": [
+      "SWaT.A1&A2 Dec 2015 List_of_attacks_Final.xlsx",
+      "SWaT.A1&A2 Dec 2015 List_of_attacks_Final.xlsx (Goh et al. 2016)",
+      "SWaT.A6 Dec 2019 Log.docx (iTrust)"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Mathur and Tippenhauer, Proc. CySWater, 2016, pp. 31-36",
+    "doi": "10.1109/CySWater.2016.7469060"
+  }
+}

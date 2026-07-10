@@ -1,0 +1,20 @@
+technique_id,technique_name,tactic,Edge-IIoTset,ICS-NAD,X-IIoTID,MSU-PWR,ICS-Flow,Rodofile,HIL-WDT,MSU-GP,EDS,SWaT
+T0847,Replication Through Removable Media,Initial Access,,,,,,,,,,1
+T0840,Network Connection Enumeration,Discovery,1,1,,,1,,,,,
+T0846,Remote System Discovery,Discovery,1,1,1,,1,,1,1,1,
+T0888,Remote System Information Discovery,Discovery,1,1,1,,,,,1,1,
+T0811,Data from Information Repositories,Collection,,,1,,,,,,,
+T0830,Adversary-in-the-Middle,Collection,1,1,,,1,,1,,1,
+T0861,Point & Tag Identification,Collection,,,1,,,,,1,,
+T0814,Denial of Service,Inhibit Response Function,1,1,,,1,,1,1,,
+T0816,Device Restart/Shutdown,Inhibit Response Function,,,,,,1,,,,
+T0835,Manipulate I/O Image,Inhibit Response Function,,,,,,1,,,,
+T0836,Modify Parameter,Impair Process Control,,,,1,,1,,1,1,
+T1692.001,Unauthorized Message: Command Message,Impair Process Control,,,,1,1,1,,1,1,1
+T1692.002,Unauthorized Message: Reporting Message,Impair Process Control,,,1,1,1,,1,1,1,1
+T0826,Loss of Availability,Impact,,,,,,,1,,,
+T0831,Manipulation of Control,Impact,,,,1,,1,,1,1,1
+T0832,Manipulation of View,Impact,,,1,1,1,,1,1,1,1
+T0837,Loss of Protection,Impact,,,,1,,,,,,
+T0879,Damage to Property,Impact,,,,,,,1,,1,
+T0882,Theft of Operational Information,Impact,,,1,,,,,,,1

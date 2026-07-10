@@ -1,0 +1,68 @@
+{
+  "dataset": "MSU-PWR",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0836",
+        "technique_name": "Modify Parameter",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.001",
+        "technique_name": "Unauthorized Message: Command Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.002",
+        "technique_name": "Unauthorized Message: Reporting Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0831",
+        "technique_name": "Manipulation of Control",
+        "tactic": "Impact",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0832",
+        "technique_name": "Manipulation of View",
+        "tactic": "Impact",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0837",
+        "technique_name": "Loss of Protection",
+        "tactic": "Impact",
+        "confidence": "high"
+      }
+    ],
+    "ics_technique_count": 6,
+    "tactics_covered": [
+      "Impact",
+      "Impair Process Control"
+    ],
+    "enterprise_techniques": [],
+    "enterprise_technique_count": 0
+  },
+  "grounding": {
+    "attack_list_source": [
+      "PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014) Scenario Types-5",
+      "PowerSystem_Dataset_README 2014 Scenario Types-3",
+      "PowerSystem_Dataset_README 2014 Scenario Types-3 + Table III",
+      "PowerSystem_Dataset_README 2014 Scenario Types-4",
+      "PowerSystem_Dataset_README 2014 Scenario Types-4 + Table III",
+      "PowerSystem_Dataset_README 2014 Scenario Types-5"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Hink et al., Proc. ISRCS, 2014, pp. 1-8",
+    "doi": "10.1109/ISRCS.2014.6900095"
+  }
+}

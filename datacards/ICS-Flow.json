@@ -1,0 +1,73 @@
+{
+  "dataset": "ICS-Flow",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0840",
+        "technique_name": "Network Connection Enumeration",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0846",
+        "technique_name": "Remote System Discovery",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0830",
+        "technique_name": "Adversary-in-the-Middle",
+        "tactic": "Collection",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0814",
+        "technique_name": "Denial of Service",
+        "tactic": "Inhibit Response Function",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.001",
+        "technique_name": "Unauthorized Message: Command Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.002",
+        "technique_name": "Unauthorized Message: Reporting Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0832",
+        "technique_name": "Manipulation of View",
+        "tactic": "Impact",
+        "confidence": "medium"
+      }
+    ],
+    "ics_technique_count": 7,
+    "tactics_covered": [
+      "Collection",
+      "Discovery",
+      "Impact",
+      "Impair Process Control",
+      "Inhibit Response Function"
+    ],
+    "enterprise_techniques": [],
+    "enterprise_technique_count": 0
+  },
+  "grounding": {
+    "attack_list_source": [
+      "Dehlaghi-Ghadim et al. 2023",
+      "Dehlaghi-Ghadim et al. 2023 arXiv:2305.09678"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Dehlaghi-Ghadim et al., IEEE Access, vol. 11, pp. 107982-107996, 2023",
+    "doi": "10.1109/ACCESS.2023.3320928"
+  }
+}

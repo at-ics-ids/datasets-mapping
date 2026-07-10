@@ -1,0 +1,61 @@
+{
+  "dataset": "Rodofile",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0816",
+        "technique_name": "Device Restart/Shutdown",
+        "tactic": "Inhibit Response Function",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0835",
+        "technique_name": "Manipulate I/O Image",
+        "tactic": "Inhibit Response Function",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0836",
+        "technique_name": "Modify Parameter",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692.001",
+        "technique_name": "Unauthorized Message: Command Message",
+        "tactic": "Impair Process Control",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0831",
+        "technique_name": "Manipulation of Control",
+        "tactic": "Impact",
+        "confidence": "high"
+      }
+    ],
+    "ics_technique_count": 5,
+    "tactics_covered": [
+      "Impact",
+      "Impair Process Control",
+      "Inhibit Response Function"
+    ],
+    "enterprise_techniques": [],
+    "enterprise_technique_count": 0
+  },
+  "grounding": {
+    "attack_list_source": [
+      "Rodofile et al. 2017",
+      "Rodofile et al. 2017 ACISP",
+      "Rodofile et al. 2017 Table 1",
+      "Rodofile et al. 2017 Table 1 +"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Rodofile et al., Information Security and Privacy, Springer, 2017, pp. 452-459",
+    "doi": "10.1007/978-3-319-59870-3_30"
+  }
+}

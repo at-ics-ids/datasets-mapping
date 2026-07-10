@@ -1,0 +1,9 @@
+technique_id,technique_name,enterprise_tactic
+T1190,Exploit Public-Facing Application,Initial Access
+T1110,Brute Force,Credential Access
+T1557,Adversary-in-the-Middle,Collection
+T1219,Remote Access Software,Command and Control
+T1071.004,Application Layer Protocol: DNS,Command and Control
+T1572,Protocol Tunneling,Command and Control
+T1486,Data Encrypted for Impact,Impact
+T1498,Network Denial of Service,Impact

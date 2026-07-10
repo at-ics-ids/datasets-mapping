@@ -1,0 +1,66 @@
+{
+  "framework": "MITRE ATT&CK for ICS v19.1",
+  "datasets": 10,
+  "cards": [
+    {
+      "dataset": "Edge-IIoTset",
+      "card": "Edge-IIoTset.json",
+      "ics_technique_count": 5,
+      "enterprise_technique_count": 4
+    },
+    {
+      "dataset": "ICS-NAD",
+      "card": "ICS-NAD.json",
+      "ics_technique_count": 5,
+      "enterprise_technique_count": 0
+    },
+    {
+      "dataset": "X-IIoTID",
+      "card": "X-IIoTID.json",
+      "ics_technique_count": 7,
+      "enterprise_technique_count": 7
+    },
+    {
+      "dataset": "MSU-PWR",
+      "card": "MSU-PWR.json",
+      "ics_technique_count": 6,
+      "enterprise_technique_count": 0
+    },
+    {
+      "dataset": "ICS-Flow",
+      "card": "ICS-Flow.json",
+      "ics_technique_count": 7,
+      "enterprise_technique_count": 0
+    },
+    {
+      "dataset": "Rodofile",
+      "card": "Rodofile.json",
+      "ics_technique_count": 5,
+      "enterprise_technique_count": 0
+    },
+    {
+      "dataset": "HIL-WDT",
+      "card": "HIL-WDT.json",
+      "ics_technique_count": 7,
+      "enterprise_technique_count": 0
+    },
+    {
+      "dataset": "MSU-GP",
+      "card": "MSU-GP.json",
+      "ics_technique_count": 9,
+      "enterprise_technique_count": 0
+    },
+    {
+      "dataset": "EDS",
+      "card": "EDS.json",
+      "ics_technique_count": 9,
+      "enterprise_technique_count": 0
+    },
+    {
+      "dataset": "SWaT",
+      "card": "SWaT.json",
+      "ics_technique_count": 6,
+      "enterprise_technique_count": 0
+    }
+  ]
+}

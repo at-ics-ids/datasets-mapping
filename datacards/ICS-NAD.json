@@ -1,0 +1,59 @@
+{
+  "dataset": "ICS-NAD",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0840",
+        "technique_name": "Network Connection Enumeration",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0846",
+        "technique_name": "Remote System Discovery",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0888",
+        "technique_name": "Remote System Information Discovery",
+        "tactic": "Discovery",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0830",
+        "technique_name": "Adversary-in-the-Middle",
+        "tactic": "Collection",
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0814",
+        "technique_name": "Denial of Service",
+        "tactic": "Inhibit Response Function",
+        "confidence": "high"
+      }
+    ],
+    "ics_technique_count": 5,
+    "tactics_covered": [
+      "Collection",
+      "Discovery",
+      "Inhibit Response Function"
+    ],
+    "enterprise_techniques": [],
+    "enterprise_technique_count": 0
+  },
+  "grounding": {
+    "attack_list_source": [
+      "Zhou et al. 2026",
+      "Zhou et al. 2026 Sci.Data"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Zhou et al., Sci. Data, vol. 13, Art. no. 399, 2026",
+    "doi": "10.1038/s41597-026-06738-x"
+  }
+}
