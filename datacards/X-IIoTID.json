@@ -1,0 +1,92 @@
+{
+  "dataset": "X-IIoTID",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0846",
+        "technique_name": "Remote System Discovery",
+        "tactics": [
+          "Discovery"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0888",
+        "technique_name": "Remote System Information Discovery",
+        "tactics": [
+          "Discovery"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0811",
+        "technique_name": "Data from Information Repositories",
+        "tactics": [
+          "Collection"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0861",
+        "technique_name": "Point & Tag Identification",
+        "tactics": [
+          "Collection"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0814",
+        "technique_name": "Denial of Service",
+        "tactics": [
+          "Inhibit Response Function"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0832",
+        "technique_name": "Manipulation of View",
+        "tactics": [
+          "Impact"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "technique_id": "T0882",
+        "technique_name": "Theft of Operational Information",
+        "tactics": [
+          "Impact"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "ics_technique_count": 7,
+    "tactics_covered": [
+      "Collection",
+      "Discovery",
+      "Impact",
+      "Inhibit Response Function"
+    ],
+    "enterprise_techniques": [
+      "T1071.004 Application Layer Protocol: DNS",
+      "T1110 Brute Force",
+      "T1219 Remote Access Tools",
+      "T1486 Data Encrypted for Impact",
+      "T1557 Adversary-in-the-Middle",
+      "T1572 Protocol Tunneling"
+    ],
+    "enterprise_technique_count": 6
+  },
+  "grounding": {
+    "attack_list_source": [
+      "Al-Hawawreh et al. 2022"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Al-Hawawreh et al., IEEE IoT-J, vol. 9, no. 5, pp. 3962-3977, 2022",
+    "doi": "10.1109/JIOT.2021.3102056"
+  }
+}

@@ -1,0 +1,12 @@
+# Pinned so that the rendered figures are byte-reproducible.
+#
+# The analytic outputs (every CSV, EVIDENCE_LOG.md, the ten data cards) are produced
+# with the standard library alone and match on any Python 3. Only figures/ depends on
+# these versions: matplotlib sizes a tight bounding box from measured text extents, so
+# a different release re-lays out the plot and changes the pixels, not merely the
+# embedded version string.
+#
+# Versions below are the ones the committed figures were rendered with, read back from
+# the PNG `Software` tEXt chunk and the PDF /Creator field.
+matplotlib==3.10.9
+numpy==2.2.6

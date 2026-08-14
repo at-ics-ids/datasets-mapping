@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+evidence-log.html
+data.bak_beforeFix/
+.venv/
+.ipynb_checkpoints/

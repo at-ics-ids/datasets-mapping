@@ -1,0 +1,20 @@
+technique_id,technique_name,tactic,source,note
+T0811,Data from Information Repositories,Collection,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/","Authoritative technique-to-tactic map. A technique is credited to EVERY tactic the ICS matrix lists it under; a sub-technique inherits its parent's tactics (look up Txxxx for Txxxx.nnn). Ten techniques in v19.1 appear under more than one tactic (T1693 under three), which is why the techniques_available column of attack_ics_v19_1_catalog.csv totals 90 tactic-technique pairs across 79 distinct techniques. Coverage is reported at parent-technique grain, matching that catalog."
+T0814,Denial of Service,Inhibit Response Function,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0816,Device Restart/Shutdown,Inhibit Response Function,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0826,Loss of Availability,Impact,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0830,Adversary-in-the-Middle,Collection,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0831,Manipulation of Control,Impact,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0832,Manipulation of View,Impact,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0835,Manipulate I/O Image,Inhibit Response Function,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0836,Modify Parameter,Impair Process Control,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0837,Loss of Protection,Impact,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0840,Network Connection Enumeration,Discovery,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0846,Remote System Discovery,Discovery,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/","Carries three sub-techniques in v19.1; the corpus maps it at the parent."
+T0847,Replication Through Removable Media,Initial Access,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0861,Point & Tag Identification,Collection,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0879,Damage to Property,Impact,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0882,Theft of Operational Information,Impact,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T0888,Remote System Information Discovery,Discovery,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/",
+T1692,Unauthorized Message,Evasion,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/","Listed under both Evasion and Impair Process Control. Sub-techniques: .001 Command Message, .002 Reporting Message."
+T1692,Unauthorized Message,Impair Process Control,"MITRE ATT&CK for ICS v19.1, https://attack.mitre.org/versions/v19/matrices/ics/","Listed under both Evasion and Impair Process Control. Sub-techniques: .001 Command Message, .002 Reporting Message."

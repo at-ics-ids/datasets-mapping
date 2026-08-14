@@ -1,0 +1,5 @@
+# One line-ending convention. Generated and hand-authored files agree, so a diff shows
+# what changed in the mapping, not what changed in the editor.
+* text=auto eol=lf
+*.png binary
+*.pdf binary

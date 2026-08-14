@@ -1,0 +1,69 @@
+{
+  "dataset": "MSU-PWR",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0836",
+        "technique_name": "Modify Parameter",
+        "tactics": [
+          "Impair Process Control"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692",
+        "technique_name": "Unauthorized Message",
+        "tactics": [
+          "Evasion",
+          "Impair Process Control"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0831",
+        "technique_name": "Manipulation of Control",
+        "tactics": [
+          "Impact"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0832",
+        "technique_name": "Manipulation of View",
+        "tactics": [
+          "Impact"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0837",
+        "technique_name": "Loss of Protection",
+        "tactics": [
+          "Impact"
+        ],
+        "confidence": "high"
+      }
+    ],
+    "ics_technique_count": 5,
+    "tactics_covered": [
+      "Evasion",
+      "Impact",
+      "Impair Process Control"
+    ],
+    "enterprise_techniques": [],
+    "enterprise_technique_count": 0
+  },
+  "grounding": {
+    "attack_list_source": [
+      "PowerSystem_Dataset_README (Adhikari/Pan/Morris 2014)"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Hink et al., Proc. ISRCS, 2014, pp. 1-8",
+    "doi": "10.1109/ISRCS.2014.6900095"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "dataset": "HIL-WDT",
+  "attack_mapping": {
+    "framework": "MITRE ATT&CK for ICS",
+    "version": "19.1",
+    "ics_techniques": [
+      {
+        "technique_id": "T0846",
+        "technique_name": "Remote System Discovery",
+        "tactics": [
+          "Discovery"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0830",
+        "technique_name": "Adversary-in-the-Middle",
+        "tactics": [
+          "Collection"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T0814",
+        "technique_name": "Denial of Service",
+        "tactics": [
+          "Inhibit Response Function"
+        ],
+        "confidence": "high"
+      },
+      {
+        "technique_id": "T1692",
+        "technique_name": "Unauthorized Message",
+        "tactics": [
+          "Evasion",
+          "Impair Process Control"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "technique_id": "T0826",
+        "technique_name": "Loss of Availability",
+        "tactics": [
+          "Impact"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "technique_id": "T0832",
+        "technique_name": "Manipulation of View",
+        "tactics": [
+          "Impact"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "technique_id": "T0879",
+        "technique_name": "Damage to Property",
+        "tactics": [
+          "Impact"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "ics_technique_count": 7,
+    "tactics_covered": [
+      "Collection",
+      "Discovery",
+      "Evasion",
+      "Impact",
+      "Impair Process Control",
+      "Inhibit Response Function"
+    ],
+    "enterprise_techniques": [],
+    "enterprise_technique_count": 0
+  },
+  "grounding": {
+    "attack_list_source": [
+      "Faramondi et al. 2021"
+    ],
+    "evidence": "data/mapping_evidence.csv (verbatim passage per mapped technique)",
+    "policy": "Attacks taken from the dataset's own paper or its official release documentation."
+  },
+  "reference": {
+    "citation": "Faramondi et al., IEEE Access, vol. 9, pp. 122385-122396, 2021",
+    "doi": "10.1109/ACCESS.2021.3109465"
+  }
+}

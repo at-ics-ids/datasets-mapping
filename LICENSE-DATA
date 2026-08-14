@@ -1,0 +1,23 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+This licence covers the non-code content of this repository, namely:
+
+  * everything in  data/       -- the mapping tables, the evidence file, the
+                                  ATT&CK for ICS v19.1 tactic catalogue, the
+                                  dataset metadata, and the generated tables
+  * everything in  datacards/  -- the machine-readable data cards
+  * everything in  figures/    -- Figures 1 to 3, as PNG and PDF
+  * the documentation          -- README.md, CITATION.cff, and this file
+
+The source code in scripts/ and reproduce.sh is licensed separately under the
+MIT Licence; see LICENSE.
+
+Attribution: A. Termanini, H. Bourdoucen, D. Al-Abri, and A. Al Maashri,
+"Mapping Intrusion-Detection Datasets to MITRE ATT&CK for ICS: A Technique-Level
+Coverage Benchmark and Open-Source Toolkit," 2026.
+
+This licence applies to our compilation and our analysis. It does not, and
+cannot, extend to third-party material reproduced or quoted here. See NOTICE
+for the rights that MITRE and the authors of the ten dataset papers retain,
+and for what this repository does not contain.
